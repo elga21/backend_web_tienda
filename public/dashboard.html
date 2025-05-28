@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los ALMEYDAS - Dashboard Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Los ALMEYDAS</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Productos</a></li>
+                <li><a href="/auth.html">Registro/Login</a></li>
+                <li><a href="/dashboard.html">Dashboard Admin</a></li>
+                <li>
+                    <a href="/cart.html">
+                        Carrito (<span id="cart-count">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        <h2>Dashboard de Administración</h2>
+
+        <section id="product-registration-section">
+            <h3>Registrar Nuevo Producto</h3>
+            <form id="product-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion"></textarea>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" min="0" required>
+
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" name="categoria_nombre" placeholder="Ej: Electrónica, Ropa" required>
+
+                <button type="submit">Registrar Producto</button>
+            </form>
+            <p id="product-message"></p>
+        </section>
+
+        <section id="existing-products-section">
+            <h3>Productos Existentes</h3>
+            <div id="product-list-admin" class="product-grid">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Los ALMEYDAS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/cart.js"></script> </body>
+</html>
+
