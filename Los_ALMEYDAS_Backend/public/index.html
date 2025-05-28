@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Almeydas - Tienda de Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Bienvenido a Los Almeydas</h1>
+        <nav>
+            <a href="/register" class="admin-link">Administración</a> </nav>
+    </header>
+
+    <main class="products-container" id="productsContainer">
+        <h2>Nuestros Productos</h2>
+        <div class="product-grid">
+            <p id="loadingMessage">Cargando productos...</p>
+            <p id="errorMessage" class="message error" style="display:none;"></p>
+            <p id="noProductsMessage" class="message" style="display:none;">No hay productos disponibles en este momento.</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
