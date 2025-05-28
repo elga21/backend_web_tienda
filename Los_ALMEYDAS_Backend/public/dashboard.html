@@ -3,34 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Almeydas - Panel de Administración</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Los ALMEYDAS - Dashboard Admin</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="dashboard-header">
-        <h1>Panel de Administración</h1>
-        <div class="user-info">
-            <span class="welcome-message" id="welcomeMessage"></span>
-            <button id="logoutButton">Cerrar Sesión</button>
-        </div>
+    <header>
+        <h1>Los ALMEYDAS</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Productos</a></li>
+                <li><a href="/auth.html">Registro/Login</a></li>
+                <li><a href="/dashboard.html">Dashboard Admin</a></li>
+                <li>
+                    <a href="/cart.html">
+                        Carrito (<span id="cart-count">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-        <h2>Registrar Nuevo Producto</h2>
+    <main class="dashboard-container">
+        <h2>Dashboard de Administración</h2>
 
-        <div class="form-section">
-            <form id="productForm">
-                <input type="text" id="referencia" placeholder="Referencia" required>
-                <input type="text" id="nombre" placeholder="Nombre del Producto" required>
-                <textarea id="descripcion" placeholder="Descripción (opcional)"></textarea>
-                <input type="number" id="precio" placeholder="Precio" step="0.01" required>
-                <input type="number" id="cantidad" placeholder="Cantidad" required>
+        <section id="product-registration-section">
+            <h3>Registrar Nuevo Producto</h3>
+            <form id="product-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion"></textarea>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" min="0" required>
+
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" name="categoria_nombre" placeholder="Ej: Electrónica, Ropa" required>
+
                 <button type="submit">Registrar Producto</button>
-                <p id="productMessage" class="message"></p>
             </form>
-        </div>
-    </div>
+            <p id="product-message"></p>
+        </section>
 
-    <script src="script.js"></script>
-</body>
+        <section id="existing-products-section">
+            <h3>Productos Existentes</h3>
+            <div id="product-list-admin" class="product-grid">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Los ALMEYDAS. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/cart.js"></script> </body>
 </html>
+

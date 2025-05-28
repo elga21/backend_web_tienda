@@ -1,19 +1,29 @@
-const mysql = require('mysql2');
-require('dotenv').config(); // Cargar variables de entorno
 
-const connection = mysql.createConnection({
-    host: 'localhost', // O la IP de tu servidor si es remoto y la app está en otra máquina
-    user: 'losalmeydas_user',
-    password: process.env.DB_PASSWORD || 'losALMEYDAS2025IBER@', // ¡¡IMPORTANTE: REEMPLAZA ESTO!!
-    database: 'Los_ALMEYDAS'
+// config/db.js
+const mysql = require('mysql2'); // Importa el módulo mysql2
+require('dotenv').config(); // Carga las variables de entorno desde el archivo .env
+
+// Crea un pool de conexiones para manejar múltiples conexiones de manera eficiente
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10, // Número máximo de conexiones en el pool
+    queueLimit: 0
 });
 
-connection.connect(err => {
+// Intenta obtener una conexión del pool para verificar que la conexión es exitosa
+pool.getConnection((err, connection) => {
     if (err) {
-        console.error('Error conectando a la base de datos:', err.stack);
+        console.error('❌ Error al conectar a MySQL:', err.stack);
         return;
     }
-    console.log('Conexión a la base de datos MySQL establecida con ID:', connection.threadId);
+    console.log('📡 Conectado a MySQL con ID:', connection.threadId);
+    connection.release(); // Libera la conexión de vuelta al pool
 });
 
-module.exports = connection;
+// Exporta el pool de conexiones
+module.exports = pool;
+
